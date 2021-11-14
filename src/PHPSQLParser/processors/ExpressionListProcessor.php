@@ -102,7 +102,8 @@ class ExpressionListProcessor extends AbstractProcessor {
                     $localTokenList = array_values($localTokenList);
                     $curr->setSubTree($this->process($localTokenList));
                     $curr->setTokenType(ExpressionType::IN_LIST);
-                } elseif ($prev->getUpper() === 'AGAINST') {
+                } elseif (false && $prev->getUpper() === 'AGAINST') {
+                    // This clause seems to make queries with Fulltext MATCH AGAINST fail hard.
 
                     $match_mode = false;
                     foreach ($localTokenList as $k => $v) {
